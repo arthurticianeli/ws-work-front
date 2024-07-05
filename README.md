@@ -1,46 +1,95 @@
-# Getting Started with Create React App
+# Instruções para Iniciar o Projeto Front
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este guia passo a passo irá ajudá-lo a configurar e iniciar o projeto `front` em seu ambiente de desenvolvimento.
 
-## Available Scripts
+## Pré-requisitos
 
-In the project directory, you can run:
+Antes de iniciar, certifique-se de que você tem o seguinte instalado em sua máquina:
 
-### `npm start`
+- Docker e Docker Compose
+- Node.js (recomendamos a utilização do NVM para gerenciar múltiplas versões do Node.js)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Passo 1: Clone o Repositório
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Clone o repositório do projeto para sua máquina local usando o seguinte comando no terminal:
 
-### `npm test`
+-- git clone https://github.com/arthurticianeli/ws-work-front.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Substitua <URL_DO_REPOSITÓRIO> pela URL do repositório do projeto.
 
-### `npm run build`
+## Passo 2: Navegue até o Diretório do Projeto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Mude para o diretório do projeto usando:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-- cd front
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Passo 3: Instale as Dependências
 
-### `npm run eject`
+No diretório do projeto, execute o seguinte comando para instalar as dependências do Node.js listadas no package.json:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-- npm install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Passo 4: Inicialize os Serviços com Docker Compose
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Para iniciar o serviço front junto com as configurações necessárias (como a porta e variáveis de ambiente), use o Docker Compose:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-- docker-compose up -d
 
-## Learn More
+Este comando irá baixar a imagem arthurticianeli/ws-work-front:latest e iniciar um container para o serviço front, tornando-o acessível através da porta 3000 do seu host.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Passo 5: Acesse a Aplicação
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Após os serviços estarem rodando, você pode acessar o frontend da aplicação navegando para http://localhost:3000 em seu navegador.
+
+## Passo 6: Desenvolvimento Local
+
+Para desenvolvimento local e para ver as mudanças em tempo real, você pode iniciar o servidor de desenvolvimento do React com:
+
+-- npm start
+
+Isso irá iniciar o servidor de desenvolvimento e abrir a aplicação no seu navegador padrão. Qualquer mudança no código fonte será automaticamente recarregada na página.
+
+## Passo 7: Parar os Serviços
+
+Para parar e remover os containers criados pelo Docker Compose, use o seguinte comando:
+
+-- docker-compose down
+
+## Dependências
+
+### @emotion/react e @emotion/styled
+
+- **Uso**: Estilização de componentes React com CSS-in-JS.
+- **Justificativa**: Permite a criação de estilos dinâmicos baseados em props, facilitando a manutenção e a reutilização de componentes estilizados.
+
+### @hookform/resolvers
+
+- **Uso**: Integração de validação de formulários com React Hook Form.
+- **Justificativa**: Simplifica a validação de formulários, melhorando a experiência do usuário e a qualidade dos dados coletados.
+
+### @mui/icons-material, @mui/lab, @mui/material, @mui/system, e @mui/x-date-pickers
+
+- **Uso**: Componentes de UI para React.
+- **Justificativa**: Oferece uma ampla gama de componentes de interface do usuário prontos para uso, consistentes e personalizáveis, acelerando o desenvolvimento.
+
+### @testing-library/jest-dom, @testing-library/react, e @testing-library/user-event
+
+- **Uso**: Ferramentas para testar componentes React.
+- **Justificativa**: Facilita a escrita de testes robustos, permitindo testar componentes de forma mais próxima da maneira como os usuários finais os utilizam.
+
+### @types/jest, @types/node, @types/react, e @types/react-dom
+
+- **Uso**: Tipagens TypeScript para Jest, Node.js, React e ReactDOM.
+- **Justificativa**: Melhora o desenvolvimento e a manutenção do código ao fornecer autocompletar e checagem de tipos em tempo de desenvolvimento.
+
+### axios
+
+- **Uso**: Cliente HTTP baseado em promessas para o navegador e node.js.
+- **Justificativa**: Simplifica a realização de requisições HTTP, oferecendo uma API fácil de usar e suporte a interceptores.
+
+### date-fns
+
+- **Uso**: Biblioteca para manipulação de datas.
+- **Justificativa**: Fornece funções simples e consistentes para manipular datas, facilitando operações como formatação, comparação e cálculo de intervalos.
+
+Cada biblioteca foi escolhida com o objetivo de otimizar o desenvolvimento, garantir a qualidade do código e melhorar a experiência do usuário final.
